@@ -9,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialComponents = [
   MatButtonModule,
@@ -21,6 +22,7 @@ const materialComponents = [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatDialogModule
 ];
 
 @NgModule({

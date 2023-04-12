@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ParkingServicesService } from '../../services/parking-services.service';
 import { Parking } from '../../parking';
@@ -9,12 +9,11 @@ import { Parking } from '../../parking';
 })
 export class ParkInfoFormComponent {
   @Input() prevInfo?: Parking;
+  @Output() cancel: EventEmitter<void> = new EventEmitter();
+  @Output() parkSubmit: EventEmitter<Parking> = new EventEmitter<Parking>();
   minDate = new Date();
   errorMsg = '';
-  constructor(
-    private formBuilder: FormBuilder,
-    private parking: ParkingServicesService
-  ) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   parkingForm = this.formBuilder.group({
     licenseNumber: ['', Validators.required],
@@ -104,7 +103,7 @@ export class ParkInfoFormComponent {
             fullExitTime.setMinutes(parseInt(exTime.slice(2)));
             parkObj.exitTime = fullExitTime;
           }
-          await this.parking.addParking(parkObj);
+          this.parkSubmit.emit(parkObj);
         } catch (error) {
           console.log(error);
         }
@@ -149,5 +148,9 @@ export class ParkInfoFormComponent {
     }
 
     return this.parkingForm.controls.parkingCharge.value || 0;
+  }
+
+  onCancel() {
+    this.cancel.emit();
   }
 }

@@ -105,10 +105,13 @@
       <mat-datepicker #exitDate></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Entry Time</mat-label>
+      <mat-label>Exit Time</mat-label>
       <input matInput type="time" formControlName="exitTime" />
     </mat-form-field>
   </div>
   <div>Parking charge = {{ ParkingCharge }}</div>
   <button mat-stroked-button type="submit">Add Parking</button>
+  <button mat-stroked-button type="button" color="warn" (click)="onCancel()">
+    Cancel
+  </button>
 </form>

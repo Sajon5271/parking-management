@@ -3,4 +3,5 @@
   flex-direction: column;
   gap: 10px;
   width: clamp(400px, 95vw, 600px);
+  padding-top: 20px;
 }

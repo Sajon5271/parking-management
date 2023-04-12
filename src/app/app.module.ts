@@ -9,9 +9,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
+import { AddParkingDialogueComponent } from './components/add-parking-dialogue/add-parking-dialogue.component';
 
 @NgModule({
-  declarations: [AppComponent, ParkInfoFormComponent, DashboardComponent, DataTableComponent],
+  declarations: [AppComponent, ParkInfoFormComponent, DashboardComponent, DataTableComponent, AddParkingDialogueComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

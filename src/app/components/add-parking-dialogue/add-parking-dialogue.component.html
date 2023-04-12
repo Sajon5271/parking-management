@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Add Parking</h1>
+<div mat-dialog-content>
+  <app-park-info-form
+    (cancel)="onCancel()"
+    (parkSubmit)="onSubmit($event)"
+  ></app-park-info-form>
+</div>
