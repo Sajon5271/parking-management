@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ParkingServicesService } from '../services/parking-services.service';
 import { Parking } from '../parking';
@@ -8,6 +8,7 @@ import { Parking } from '../parking';
   styleUrls: ['./park-info-form.component.css'],
 })
 export class ParkInfoFormComponent {
+  @Input() prevInfo?: Parking;
   minDate = new Date();
   errorMsg = '';
   constructor(
@@ -37,10 +38,27 @@ export class ParkInfoFormComponent {
     parkingCharge: [0, Validators.required],
   });
 
-  ngOnInt() {}
+  ngOnInt() {
+    if (this.prevInfo) {
+      const formData: any = { ...this.prevInfo };
+      formData.entryDate = this.prevInfo.entryTime;
+      formData.entryTime = this.convertDateToTimeString(
+        this.prevInfo.entryTime
+      );
+      if (this.prevInfo.exitTime) {
+        formData.exitDate = this.prevInfo.exitTime;
+        formData.exitTime = this.convertDateToTimeString(
+          this.prevInfo.exitTime
+        );
+      }
+      this.parkingForm.patchValue(formData);
+    }
+  }
 
   async handleSubmit() {
-    console.log(this.parkingForm.value);
+    const { entryTime } = this.parkingForm.value;
+    if (entryTime)
+      console.log(entryTime, entryTime.slice(0, 2), entryTime.slice(3));
     if (this.parkingForm.valid) {
       const {
         licenseNumber,
@@ -68,7 +86,7 @@ export class ParkInfoFormComponent {
         try {
           const fullEntryTime = entryDate;
           fullEntryTime.setHours(parseInt(entryTime.slice(0, 2)));
-          fullEntryTime.setMinutes(parseInt(entryTime.slice(2)));
+          fullEntryTime.setMinutes(parseInt(entryTime.slice(3)));
           const parkObj: Parking = {
             licenseNumber,
             vehicleType: vehicleType as 'microbus' | 'car' | 'truck',
@@ -109,6 +127,13 @@ export class ParkInfoFormComponent {
   get currentTimeOnly() {
     const hour = new Date().getHours() + '';
     const minutes = new Date().getMinutes() + '';
+
+    return hour.padStart(2, '0') + ':' + minutes.padStart(2, '0');
+  }
+
+  convertDateToTimeString(date: Date) {
+    const hour = date.getHours() + '';
+    const minutes = date.getMinutes() + '';
 
     return hour.padStart(2, '0') + ':' + minutes.padStart(2, '0');
   }

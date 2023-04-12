@@ -13,17 +13,21 @@ export class ParkingServicesService {
       const currentTotalParkings = await this.getParkingCount();
       parking.id = currentTotalParkings + 1;
       return update('parking', (old) => {
-        return old ? old.push(parking) : [parking];
+        return old ? [...old, parking] : [parking];
       });
     } catch (error) {
       console.log(error);
     }
   }
 
+  getAllParkings() {
+    return get('parking');
+  }
+
   async getParkingCount(): Promise<number> {
     try {
       const allData: Parking[] | undefined = await get('parking');
-      allData ? allData.length : 0;
+      return allData ? allData.length : 0;
     } catch (error) {
       console.log(error);
     }
