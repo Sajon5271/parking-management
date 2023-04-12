@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Edit Parking</h1>
+<div mat-dialog-content>
+  <app-park-info-form
+    [prevInfo]="data"
+    (cancel)="onCancel()"
+    (parkSubmit)="onSubmit($event)"
+  ></app-park-info-form>
+</div>

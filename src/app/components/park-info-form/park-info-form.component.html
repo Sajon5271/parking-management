@@ -110,7 +110,9 @@
     </mat-form-field>
   </div>
   <div>Parking charge = {{ ParkingCharge }}</div>
-  <button mat-stroked-button type="submit">Add Parking</button>
+  <button mat-stroked-button type="submit">
+    {{ prevInfo ? "Update Parking" : "Add Parking" }}
+  </button>
   <button mat-stroked-button type="button" color="warn" (click)="onCancel()">
     Cancel
   </button>

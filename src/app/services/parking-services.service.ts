@@ -66,10 +66,11 @@ export class ParkingServicesService {
   updateParking(id: number, parking: Parking) {
     return update('parking', (old: Parking[] | undefined) => {
       if (!old) return [];
-      old.forEach((element) => {
+      const newData = old.map((element) => {
         if (element.id === id) element = { ...element, ...parking };
+        return element;
       });
-      return old;
+      return newData;
     });
   }
 }

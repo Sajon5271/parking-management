@@ -13,7 +13,7 @@ export class DashboardComponent {
   addParking() {
     const dialogueRef = this.dialogue.open(AddParkingDialogueComponent);
     dialogueRef.afterClosed().subscribe((res) => {
-      console.log(res);
+      location.reload();
     });
   }
 }

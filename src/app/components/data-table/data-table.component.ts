@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Parking } from 'src/app/parking';
 import { ParkingServicesService } from 'src/app/services/parking-services.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditParkingDialogueComponent } from '../edit-parking-dialogue/edit-parking-dialogue.component';
 
 @Component({
   selector: 'app-data-table',
@@ -25,7 +27,10 @@ export class DataTableComponent {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private parking: ParkingServicesService) {}
+  constructor(
+    private parking: ParkingServicesService,
+    private dialogue: MatDialog
+  ) {}
   async ngOnInit() {
     try {
       const allParkings = await this.parking.getAllParkings();
@@ -41,5 +46,12 @@ export class DataTableComponent {
 
   applyFilter(event: Event) {}
 
-  editParking() {}
+  editParking(parking: Parking) {
+    const dialogueRef = this.dialogue.open(EditParkingDialogueComponent, {
+      data: parking,
+    });
+    dialogueRef.afterClosed().subscribe(() => {
+      location.reload();
+    });
+  }
 }

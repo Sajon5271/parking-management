@@ -37,7 +37,7 @@ export class ParkInfoFormComponent {
     parkingCharge: [0, Validators.required],
   });
 
-  ngOnInt() {
+  ngOnInit() {
     if (this.prevInfo) {
       const formData: any = { ...this.prevInfo };
       formData.entryDate = this.prevInfo.entryTime;
@@ -103,6 +103,7 @@ export class ParkInfoFormComponent {
             fullExitTime.setMinutes(parseInt(exTime.slice(2)));
             parkObj.exitTime = fullExitTime;
           }
+          if (this.prevInfo && this.prevInfo.id) parkObj.id = this.prevInfo.id;
           this.parkSubmit.emit(parkObj);
         } catch (error) {
           console.log(error);
