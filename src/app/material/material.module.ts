@@ -6,6 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 const materialComponents = [
   MatButtonModule,
@@ -15,6 +18,9 @@ const materialComponents = [
   MatButtonToggleModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
 ];
 
 @NgModule({

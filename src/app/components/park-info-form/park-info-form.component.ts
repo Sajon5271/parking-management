@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ParkingServicesService } from '../services/parking-services.service';
-import { Parking } from '../parking';
+import { ParkingServicesService } from '../../services/parking-services.service';
+import { Parking } from '../../parking';
 @Component({
   selector: 'app-park-info-form',
   templateUrl: './park-info-form.component.html',
