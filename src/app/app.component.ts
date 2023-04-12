@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private parking: ParkingServicesService) {}
   async ngOnInit() {
     try {
-      this.allParkings = await this.parking.getAllParkings();
+      this.allParkings = (await this.parking.getAllParkings()) || [];
     } catch (error) {
       console.log(error);
     }

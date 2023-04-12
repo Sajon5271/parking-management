@@ -50,8 +50,5 @@ export class DataTableComponent {
     const dialogueRef = this.dialogue.open(EditParkingDialogueComponent, {
       data: parking,
     });
-    dialogueRef.afterClosed().subscribe(() => {
-      location.reload();
-    });
   }
 }

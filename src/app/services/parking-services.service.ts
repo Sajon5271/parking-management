@@ -20,7 +20,7 @@ export class ParkingServicesService {
     }
   }
 
-  getAllParkings() {
+  getAllParkings(): Promise<Parking[] | undefined> {
     return get('parking');
   }
 

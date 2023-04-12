@@ -24,6 +24,7 @@ export class EditParkingDialogueComponent {
       const parkDupl = { ...parking };
       await this.parking.updateParking(parkDupl.id || 0, parkDupl);
       this.dialogRef.close();
+      location.reload();
     } catch (error) {
       console.log(error);
     }

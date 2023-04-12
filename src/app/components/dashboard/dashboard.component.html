@@ -1,5 +1,26 @@
-<p>dashboard works!</p>
-<button type="button" mat-raised-button (click)="addParking()">
+<div class="cardContainer">
+  <div class="card">
+    <div class="cardTitle">Total parkings:</div>
+    <div class="cardContent">{{ totalCars }}</div>
+  </div>
+  <div class="card">
+    <div class="cardTitle">Empty slots:</div>
+    <div class="cardContent">{{ totalEmptySlot }}</div>
+  </div>
+  <div class="card">
+    <div class="cardTitle">Vehicle types:</div>
+    <div>Cars: {{ vehicleInfo.cars }}</div>
+    <div>Microbus: {{ vehicleInfo.microbus }}</div>
+    <div>Trucks: {{ vehicleInfo.trucks }}</div>
+  </div>
+</div>
+<button
+  class="addParkingButton"
+  color="secondary"
+  type="button"
+  mat-raised-button
+  (click)="addParking()"
+>
   Add parking
 </button>
-<app-data-table></app-data-table>
+<app-data-table class="tableData"></app-data-table>

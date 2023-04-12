@@ -1,0 +1,27 @@
+.card {
+  width: 30vw;
+  min-height: 10vh;
+  background-color: blueviolet;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
+}
+
+.cardTitle {
+  font-weight: 500;
+  font-size: larger;
+}
+
+.cardContent {
+  font-size: xx-large;
+}
+.cardContainer {
+  display: flex;
+}
+.addParkingButton {
+  margin: 20px;
+}
+
+

@@ -23,6 +23,7 @@ export class AddParkingDialogueComponent {
       const parkDupl = { ...parking };
       await this.parking.addParking(parkDupl);
       this.dialogRef.close();
+      location.reload();
     } catch (error) {
       console.log(error);
     }

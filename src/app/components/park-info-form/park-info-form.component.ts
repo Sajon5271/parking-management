@@ -100,7 +100,7 @@ export class ParkInfoFormComponent {
             const exTime = exitTime as string;
             const fullExitTime = exitDate as Date;
             fullExitTime.setHours(parseInt(exTime.slice(0, 2)));
-            fullExitTime.setMinutes(parseInt(exTime.slice(2)));
+            fullExitTime.setMinutes(parseInt(exTime.slice(3)));
             parkObj.exitTime = fullExitTime;
           }
           if (this.prevInfo && this.prevInfo.id) parkObj.id = this.prevInfo.id;
