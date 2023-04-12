@@ -1,1 +1,114 @@
-<p>park-info-form works!</p>
+<form class="parkingForm" [formGroup]="parkingForm" (submit)="handleSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>License Number</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="licenseNumber"
+      placeholder="Input the license number"
+    />
+    <mat-error *ngIf="parkingForm.controls.licenseNumber?.hasError('required')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <div>
+    <mat-label>Vehicle Type</mat-label>
+    <mat-button-toggle-group name="vehicleType" formControlName="vehicleType">
+      <mat-button-toggle value="microbus">Microbus</mat-button-toggle>
+      <mat-button-toggle value="car">Car</mat-button-toggle>
+      <mat-button-toggle value="truck">Truck</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Owner Name</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="ownerName"
+      placeholder="Input the Owner Name"
+    />
+    <mat-error *ngIf="parkingForm.controls.ownerName?.hasError('required')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Owner Phone No.</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="ownerPhone"
+      placeholder="Input the Owner Phone"
+    />
+    <mat-error *ngIf="parkingForm.controls.ownerPhone?.hasError('required')"
+      >This field is required</mat-error
+    >
+
+    <mat-error *ngIf="phoneNumberError">Phone Number Invalid</mat-error>
+  </mat-form-field>
+  <div>
+    <mat-label>Status</mat-label>
+    <mat-button-toggle-group name="vehicleType" formControlName="status">
+      <mat-button-toggle value="in">In</mat-button-toggle>
+      <mat-button-toggle value="out">Out</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Owner Address</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="ownerAddress"
+      placeholder="Input the Owner Address"
+    />
+    <mat-error *ngIf="parkingForm.controls.ownerAddress?.hasError('required')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Entry date</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        formControlName="entryDate"
+        [matDatepicker]="entryDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="entryDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #entryDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Entry Time</mat-label>
+      <input matInput type="time" formControlName="entryTime" />
+      <mat-error *ngIf="parkingForm.controls.entryTime?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>Exit Date</mat-label>
+      <input
+        matInput
+        [min]="minDate"
+        formControlName="exitDate"
+        [matDatepicker]="exitDate"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="exitDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #exitDate></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Entry Time</mat-label>
+      <input matInput type="time" formControlName="exitTime" />
+    </mat-form-field>
+  </div>
+  <div>Parking charge = {{ ParkingCharge }}</div>
+  <button mat-stroked-button type="submit">Add Parking</button>
+</form>

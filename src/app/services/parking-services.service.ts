@@ -49,6 +49,15 @@ export class ParkingServicesService {
       return old;
     });
   }
+  updateExitTime(id: number, exitTime: Date) {
+    return update('parking', (old: Parking[] | undefined) => {
+      if (!old) return [];
+      old.forEach((element) => {
+        if (element.id === id) element.exitTime = exitTime;
+      });
+      return old;
+    });
+  }
 
   updateParking(id: number, parking: Parking) {
     return update('parking', (old: Parking[] | undefined) => {
